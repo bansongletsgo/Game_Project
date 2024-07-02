@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class left : MonoBehaviour
+public class CharacterMove : MonoBehaviour
 {
     private BoxCollider2D boxCollider;
     public LayerMask layerMask;
