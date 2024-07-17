@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+    static public CameraMove instance;
     public GameObject target; // 카메라 고정 대상
     public float moveSpeed; // 카메라 이동 속도
     private Vector3 targetPosition; // 대상의 현재 위치
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null){
+           DontDestroyOnLoad(this.gameObject);
+           instance = this; 
+        }
+        else{
+            Destroy(this.gameObject);
+        }
         
     }
 
