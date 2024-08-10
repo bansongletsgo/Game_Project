@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterMove : MonoBehaviour
 {
+    static public CharacterMove instance;
+    public string currentMapName;
     private BoxCollider2D boxCollider;
     public LayerMask layerMask;
     public float speed; //일반 속도
@@ -21,8 +23,16 @@ public class CharacterMove : MonoBehaviour
     */
     void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        animator = GetComponent<Animator>();
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            boxCollider = GetComponent<BoxCollider2D>();
+            animator = GetComponent<Animator>();
+        }
+        else{
+            Destroy(this.gameObject);
+        }
+        
     }
 
     /*
