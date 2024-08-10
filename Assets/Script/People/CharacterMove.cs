@@ -15,12 +15,21 @@ public class CharacterMove : MonoBehaviour
     private float currentWalkCount;
     private bool canMove = true;
     private Animator animator;
-    // Start is called before the first frame update
+
+    /*
+    - GetComponent   
+    */
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
     }
+
+    /*
+        상하좌우 중 하나라도 입력 받으면 이 함수 실행
+        shift 키를 누를 경우 달리는 속도로 변경
+        
+    */
     IEnumerator MoveCoroutine(){
         while(Input.GetAxisRaw("Horizontal")!=0 || Input.GetAxisRaw("Vertical")!=0){
             if(Input.GetKey(KeyCode.LeftShift)){
